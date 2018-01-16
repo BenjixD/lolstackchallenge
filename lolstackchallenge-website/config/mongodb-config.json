@@ -1,0 +1,9 @@
+{
+	"url": "mongodb://localhost:27017",
+	"database_name": "lolstackchallenge",
+	"collection": {
+		"Sion": "SionStackChallenge",
+		"Veigar": "VeigarStackChallenge",
+		"Nasus":"NasusStackChallenge"
+	}
+}

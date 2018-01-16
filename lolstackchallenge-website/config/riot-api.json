@@ -1,7 +1,8 @@
 {
 	"default": {
-		"api_key": "RGAPI-df779e8e-8c10-4559-a1b6-c5a312cf9e00",
-		"host": "{region}.api.riotgames.com"
+		"api_key": "RGAPI-2409cdf8-874c-41fe-a641-862a22a49b07",
+		"host": "{region}.api.riotgames.com",
+		"season": 9
 	},
 	"development": {
 
@@ -23,10 +24,12 @@
 		"LA2": "la2"
 	},
 	"api": {
+		"patch":"7.24.2",
 		"summoner_v3": {
 			"by_name":"/lol/summoner/v3/summoners/by-name/{summonerName}"
 		},
 		"match_v3": {
+			"get_match": "/lol/match/v3/matches/{matchId}",
 			"by_account": "/lol/match/v3/matchlists/by-account/{accountId}",
 			"by_account_recent": "/lol/match/v3/matchlists/by-account/{accountId}/recent"
 		}

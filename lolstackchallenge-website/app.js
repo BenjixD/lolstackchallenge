@@ -4,7 +4,15 @@ var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 //Filesystem
 var path = require('path');
+//mongodb
+var mongo = require(path.join(__dirname, 'database', 'mongodb.js'));
 
+//connect to database
+mongo.connect(function(err){
+	if(err){
+		throw err;
+	}
+});
 
 //Startup webserver
 var app = express();
@@ -12,7 +20,7 @@ var app = express();
 app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')));
 //Body Parsing
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 //Serve from public
 app.use(express.static(path.join(__dirname, 'public')));
 
