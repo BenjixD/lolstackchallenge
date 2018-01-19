@@ -4,14 +4,10 @@ var async = require('async');
 var https = require('https');
 var sanitizer = require('sanitizer');
 var multer = require('multer');
-
 //mongodb
-var mongo;
-//aws
-var AWS;
-
+var mongo = require("../database/mongodb");
 //Config
-var riotApi = require('../config/secret/riot-api.json');
+var riotApi = require('../config/riot-api.json');
 var leaderboardConfig = require('../config/leaderboard-config.json');
 var mongoConfig = require("../config/mongodb-config.json");
 
@@ -99,7 +95,6 @@ router.post('/stack/:region/:champion/entry', uploadImage.single('image'), funct
 		//Data
 		var matchId =  sanitizer.sanitize(req.body.matchId);
 		var summoner = sanitizer.sanitize(req.body.summoner);
-		var stacks = sanitizer.sanitize(req.body.stacks);
 		var image = req.file;
 
 		async.waterfall([
@@ -111,15 +106,10 @@ router.post('/stack/:region/:champion/entry', uploadImage.single('image'), funct
 				getPlayerDataFromMatch(summoner, data, callback);
 			},
 			function(data, callback){
-				if(!isNaN(stacks)){
-					data.player.stacks = parseInt(stacks);
-					data.player.name = summoner;
-					callback(null, data);	
-				}else{
-					callback(new Error("Invalid stacks."), null);
-				}
+				data.player.name = summoner;
+				callback(null, data);
 			},
-			//Query if exists and within top
+			//Query if exists
 			function(data, callback){
 				findGameMatch(data.seasonId, parseInt(data.gameId), leaderboardConfig.stack_challenge.champion[champion], function(err, result){
 					if(err){
@@ -132,17 +122,6 @@ router.post('/stack/:region/:champion/entry', uploadImage.single('image'), funct
 					}
 				});
 			},
-			//Ensure the image goes into s3
-			function(data, callback){
-				var object = {Key: leaderboardConfig.stack_challenge.champion[champion]+"/"+matchId, 
-											ContentType: image.mimetype,
-											Body: image.buffer,
-											ACL: 'public-read'};
-				AWS.S3().putObject(object, function(err, result){
-					data.url = AWS.ClientData().s3.url+'/'+object.Key;
-					callback(err,  data);
-				});
-			}
 			//finally
 			], function(err, result){
 				if(err){
@@ -308,8 +287,4 @@ function findGameMatch(season, matchId, champion, callback){
 		]}, callback);
 }
 
-module.exports = function(mongodb, aws){
-	mongo = mongodb;
-	AWS = aws;
-	return router;	
-}
+module.exports = router;

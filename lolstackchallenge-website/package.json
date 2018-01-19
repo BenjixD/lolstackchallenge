@@ -29,7 +29,6 @@
   "homepage": "https://github.com/BenjixD/lolstackchallenge#readme",
   "dependencies": {
     "async": "^2.6.0",
-    "aws-sdk": "^2.184.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "https": "^1.0.0",
