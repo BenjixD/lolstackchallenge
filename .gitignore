@@ -38,7 +38,7 @@ node_modules
 notsecret.txt
 
 #Server config for this system
-#config/secret
+config/secret
 
 #Public keys
 *.pem
