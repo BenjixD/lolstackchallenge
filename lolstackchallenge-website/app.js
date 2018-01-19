@@ -2,17 +2,21 @@
 var express = require('express');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
+
 //Filesystem
 var path = require('path');
+
 //mongodb
 var mongo = require(path.join(__dirname, 'database', 'mongodb.js'));
-
 //connect to database
 mongo.connect(function(err){
 	if(err){
 		throw err;
 	}
 });
+
+//AWS
+var AWS = require(path.join(__dirname, 'aws', 'aws.js'));
 
 //Startup webserver
 var app = express();
@@ -30,7 +34,7 @@ app.get('/', function(req, res, err){
 });
 
 //routes
-const leaderboard = require('./routes/leaderboard');
+const leaderboard = require('./routes/leaderboard')(mongo, AWS);
 app.use('/leaderboard', leaderboard);
 
 app.listen(3000, function() {
