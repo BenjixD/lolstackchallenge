@@ -38,7 +38,7 @@ node_modules
 notsecret.txt
 
 #Server config for this system
-#gibsonwebsite/server_config.json
+config/secret
 
 #Public keys
 *.pem
