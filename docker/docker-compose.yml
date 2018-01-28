@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+    lsc-nginx:
+        image: benjixd/lolstackchallenge
+        build: ../nginx-webserver/.
+        networks:
+            - web 
+        ports:
+            - "80:80"
+        deploy:
+            mode: replicated
+            endpoint_mode: vip 
+networks:
+    web:
+        driver: overlay
+    database:
+        driver: overlay

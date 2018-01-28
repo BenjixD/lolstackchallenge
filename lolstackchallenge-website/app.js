@@ -9,6 +9,7 @@ var path = require('path');
 //mongodb
 var mongo = require(path.join(__dirname, 'database', 'mongodb.js'));
 //connect to database
+//
 mongo.connect(function(err){
 	if(err){
 		throw err;
