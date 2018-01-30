@@ -1,8 +1,21 @@
 version: '3.3'
 services:
-    lsc-nginx:
-        image: benjixd/lolstackchallenge
+    mongo-leaderboard:
+        build: ../mongo-leaderboard/.
+        image: benjixd/lolstackchallenge/mongo-leaderboard
+        volumes:
+            - leaderboard-data:/data/db/
+        networks:
+            - database 
+        ports:
+            - "27017:27017"
+        deploy:
+            mode: replicated
+            endpoint_mode: vip
+
+    nginx-webserver:
         build: ../nginx-webserver/.
+        image: benjixd/lolstackchallenge/nginx-webserver
         networks:
             - web 
         ports:
@@ -10,8 +23,13 @@ services:
         deploy:
             mode: replicated
             endpoint_mode: vip 
+
+
 networks:
     web:
         driver: overlay
     database:
         driver: overlay
+
+volumes:
+    leaderboard-data:
