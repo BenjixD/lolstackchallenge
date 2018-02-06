@@ -1,5 +1,5 @@
 {
-	"url": "mongodb://localhost:27017",
+	"url": "mongodb://lolstackchallenge_mongo-leaderboard:27017",
 	"database_name": "lolstackchallenge",
 	"collection": {
 		"Sion": "SionStackChallenge",

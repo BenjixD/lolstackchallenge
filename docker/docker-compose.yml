@@ -11,7 +11,17 @@ services:
             - "27017:27017"
         deploy:
             mode: replicated
-            endpoint_mode: vip
+            endpoint_mode: vip 
+   
+    node-webapp:
+        build: ../lolstackchallenge-website/.
+        image: benjixd/lolstackchallenge/node-webapp
+        networks:
+            - database
+            - web
+        deploy:
+            mode: replicated
+            endpoint_mode: dnsrr 
 
     nginx-webserver:
         build: ../nginx-webserver/.
