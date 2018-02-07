@@ -1,9 +1,0 @@
-{
-	"url": "mongodb://lolstackchallenge_mongo-leaderboard:27017",
-	"database_name": "lolstackchallenge",
-	"collection": {
-		"Sion": "SionStackChallenge",
-		"Veigar": "VeigarStackChallenge",
-		"Nasus":"NasusStackChallenge"
-	}
-}
