@@ -14,7 +14,7 @@ services:
             endpoint_mode: vip 
    
     node-webapp:
-        build: ../lolstackchallenge-website/.
+        build: ../lolstackchallenge-apigateway/.
         image: benjixd/lolstackchallenge/node-webapp
         networks:
             - database

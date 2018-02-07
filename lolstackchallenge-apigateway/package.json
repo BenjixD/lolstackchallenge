@@ -1,0 +1,42 @@
+{
+  "name": "lolstackchallenge",
+  "version": "1.0.0",
+  "description": "Rankings of the best League of Legends stackers in the world.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenjixD/lolstackchallenge.git"
+  },
+  "keywords": [
+    "LoL",
+    "League",
+    "of",
+    "Legends",
+    "Nasus",
+    "Veigar",
+    "Sion",
+    "Rankings"
+  ],
+  "author": "Benjamin Zhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenjixD/lolstackchallenge/issues"
+  },
+  "homepage": "https://github.com/BenjixD/lolstackchallenge#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "aws-sdk": "^2.184.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "https": "^1.0.0",
+    "mongodb": "^3.0.1",
+    "multer": "^1.3.0",
+    "path": "^0.12.7",
+    "sanitizer": "^0.1.3",
+    "serve-favicon": "^2.4.5"
+  }
+}

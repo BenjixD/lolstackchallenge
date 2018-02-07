@@ -1,0 +1,19 @@
+{
+	"stack_challenge": {
+		"champion": {
+			"14":"Sion",	
+			"45":"Veigar",
+			"75":"Nasus",
+			"33":"Rammus"
+		},
+		"queue_mode": {
+			"400":"Summoner's Rift",
+			"420":"Summoner's Rift",
+			"430":"Summoner's Rift",
+			"440":"Summoner's Rift",
+			"450":"Howling Abyss",
+			"460":"Twisted Treeline",
+			"470":"Twisted Treeline"
+		}
+	}
+}

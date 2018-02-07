@@ -1,9 +1,10 @@
 FROM nginx
-COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/config/nginx/nginx.conf /etc/nginx/nginx.conf
 
 #remove the default conf.d
 RUN rm /etc/nginx/conf.d/*
-COPY config/nginx/conf.d/. /etc/nginx/conf.d/
+COPY nginx/config/nginx/conf.d/. /etc/nginx/conf.d/
 
 #Copy static content
-COPY ../lolstackchallenge-web/* /lolstackchallenge-web/
+#RUN mkdir /lolstackchallenge-web
+COPY lolstackchallenge-web/. /lolstackchallenge-web/
